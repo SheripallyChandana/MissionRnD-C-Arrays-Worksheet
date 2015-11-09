@@ -15,5 +15,25 @@ NOTES:
 
 void * sortedArrayPositionsChange(int *Arr, int len)
 {
-	return NULL;
+	if (Arr == NULL || len < 1)
+		return NULL;
+
+
+	int left = 0;
+	int right = len - 1;
+	int temp;
+	
+	while(Arr[left] < Arr[left + 1] && left <= len - 2)
+		++left;
+	while(Arr[right - 1] < Arr[right] && right >= 1)
+		--right;
+	
+	temp = Arr[left];
+	Arr[left] = Arr[right];
+	Arr[right] = temp;
+
+	for (int index = 0; index < len; ++index)
+		printf(" %3d", Arr[index]);
+	
+	return Arr;
 }
